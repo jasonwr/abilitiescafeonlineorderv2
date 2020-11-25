@@ -104,6 +104,12 @@
             width:40%;  /* adjust as per your needs */
         }
 
+        #quantityBox {
+            position:absolute;
+            bottom:0;
+            left:0;
+        }
+
         /*The upper half of the product details page*/
         .top_popup{
             float: left;
@@ -174,7 +180,10 @@
                         <!-- Image -->
                         <img id="myImage" src="Cookie.jpg">
                         <!-- Description -->
-                        <p id="textDescription" width = "40%" margin = "1%" style="font-size:30px">oops</p>
+                        <div width = "40%" height = "1000px"; padding = "1%">
+                            <p id="textDescription" width = "40%" style="font-size:30px">oops</p>
+                            <input type="number" id="quanitityBox">
+                        </div>
                     </span>
                 </div>
                 <!-- Bottom half of the DIV -->
