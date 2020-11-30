@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {margin: 0; padding: 0;}
+        .container {height: 100%; width:100%; font-size: 0;}
+        .left, .middle, .right {display: inline-block; *display: inline; zoom: 1; vertical-align: top; font-size: 12px; height: 250px;}
+        .left {width: 40%;}
+        .middle {width: 35%;}
+        .right {width: 25%;}
+
+        /* Centers things on the window, such as the Abilities Cafe logo and the food items*/
+        .center {
+            max-width: 1000px;
+            margin: auto;
+            position: relative;
+            
+            text-align: center
+        }
+
+        #quantityBox {
+            position:absolute;
+            bottom:0;
+            left:0;
+            font-size: 40px;
+            height: 40px;
+        }
+
+        .cart_item{
+            position: relative;
+            bottom: 8;
+            background-color: greenyellow;
+            margin: 5%;
+            padding: 5%;
+            width: 80%;
+            height: calc(width / 2);
+        }
+
+        .cart_image{
+            float: left;
+            width: 100%;
+        }
+
+        .cart_text{
+            font-size: 30px;
+            width: 80%;
+            height: 50%;
+            margin: 5%;
+            margin-top: 0;
+        }
+
+        .cart_text2{
+            font-size: 30px;
+            width: 80%;
+            
+            margin-left: 5%;
+            vertical-align: bottom;
+        }
+
+        .cart_remove{
+            position: absolute;
+            font-size: 20px;
+            min-height: 50px;
+            width: 20%;
+            height: 10px;
+            right: 7%;
+        }
+
+        .cart_button{
+            display: table-cell;
+            position: absolute;
+            font-size: 20px;
+            min-height: 50px;
+            width: 20%;
+            height: 10px;
+            right: 7%;
+            bottom: 15%;
+        }
+
+        /* Centers things on the window, such as the Abilities Cafe logo and the food items*/
+        .footer {
+            display: inline-block;
+            position: relative;
+            bottom: 8;
+            background-color: greenyellow;
+            margin: 5%;
+            padding: 5%;
+            width: 80%;
+            height: calc(width / 3);
+        }
+
+        .checkout_button{
+            position: absolute;
+            font-size: 30px;
+            min-height: 50px;
+            width: 25%;
+            height: 50%;
+            left: 0%;
+            top: 20px;
+        }
+    </style>
+</head>
+<html>
+    <body>
+        <!-- The Abilities Cafe logo at the top -->
+        <div class = "center">
+            <img src="img/AbilitiesCafeLogoFinal-1.png" class = "center" max-width = "200px" width = "20%"></img>
+        </div>
+
+        <!-- The list of items -->
+        <div class = "center">
+            <!-- A cart item -->
+            <div class = "cart_item">
+                <div class="container">
+                    <!-- The image -->
+                    <div class="left">
+                        <img src = "img/Cookie.jpg" class = "cart_image"></img>
+                    </div>
+
+                    <!-- The name and quantity -->
+                    <div class="middle">
+                        <p class = "cart_text" align = "left">Chocolate Chip Cookies</p>
+                        <div  align = "left">
+                            <p class = "cart_text2">Quantity</p>
+                            <input align = "left" type="number" id="quanitityBox" style = "margin: 5%; height: 40px; font-size:40px; width: 80%;">
+                        </div>
+                        
+                    </div>
+
+                    <!-- The price and buttons -->
+                    <div class="right">
+                        <p class = "cart_text" align = "right">$4.00</p>
+                        <button class="cart_remove">Remove</button>
+                        <button class="cart_button">Update</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class = "cart_item">
+                <div class="container">
+                    <!-- Checkout button -->
+                    <div class="left">
+                        <button class="checkout_button" style = "margin: 5%">Checkout</button>
+                    </div>
+
+                    <!-- Labels -->
+                    <div class="middle">
+                        <p style = "font-size: 40px; width:30%">Subtotal:<br/>Tax:<br/>Total:</p>
+                    </div>
+
+                    <!-- Prices -->
+                    <div class="right">
+                        <p style = "font-size: 40px; text-align: left; width:30%">$999.00<br/>$9.99<br/>$1009.98</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
