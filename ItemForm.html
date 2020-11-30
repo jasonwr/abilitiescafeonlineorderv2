@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <head>
     <style>
+        /* The Abilities Cafe logo at the top */
         .logo {
             max-width: 1000px;
             margin: auto;
@@ -16,22 +17,26 @@
             background-color:aqua;
         }
 
+        /* margins for the labels of each field */
         .margin-label {
             margin: 4%;
             margin-top: 2%;
             margin-bottom: 0%;
         }
 
+        /* margins for the entry field s*/
         .margin-field {
             margin: 4%;
             margin-top: 0%;
             margin-bottom: 2%;
         }
 
+        /* Margins for radio buttons or checkboxes */
         .margin-option{
             margin-left: 4%;
         }
 
+        /* Margins for the submit button at the bottom */
         .margin-submit {
             margin: 4%;
         }
@@ -39,28 +44,43 @@
 </head>
 <html>
     <body>
+        <!-- Header containing the Abilities Cafe logo -->
         <div class = logo>
             <img src="img/AbilitiesCafeLogoFinal-1.png" class = "logo" max-width = "200px" width = "20%"></img>
         </div>
+
+        <!-- The form that people submit things into -->
         <div class = center>
             <h1 class = "margin-submit">Submit a new food item</h1>
             <form>
+                <!-- Name of the food item -->
                 <h2 class = "margin-label">Name:</h2>
                 <input class = "margin-field" type="text" id="Name">
+
+                <!-- The image must be 4:3 or else it will mess with the layout and make it look ugly -->
                 <h2 class = "margin-label">Image (must be 4:3 aspect ratio)</h2>
                 <input class = "margin-field" type="file" id="myFile" name="filename">
+
+                <!-- Description of the food item -->
                 <h2 class = "margin-label">Description:</h2>
-                <textarea class = "margin-field" rows="5" cols="60" name="text" id="Description" placeholder="Describe Food"></textarea>
+                <textarea class = "margin-field" rows="5" cols="60" name="text" id="Description"
+                    placeholder="Describe Food"></textarea>
+
+                <!-- Price per normal unit of the food item -->
                 <h2 class = "margin-label">Price (US Dollars):</h2>
                 <input class = "margin-field" type="number" id="Price">
+
+                <!-- Is it food?  Drink?  Something else? -->
                 <h2 class = "margin-label">Type:</h2>
                 <input class = "margin-option" type="radio" id="Food" name="gender" value="Food">
-                <label for="male">Food</label><br>
+                <label for="Food">Food</label><br>
                 <input class = "margin-option" type="radio" id="Drink" name="gender" value="Drink">
-                <label for="female">Drink</label><br>
+                <label for="Drink">Drink</label><br>
                 <input class = "margin-option" type="radio" id="Other" name="gender" value="Other">
-                <label for="other">Other</label>
+                <label for="Other">Other</label>
                 <br/>
+
+                <!-- Submit button -->
                 <input class = "margin-submit" type="submit">
             </form>
         </div>

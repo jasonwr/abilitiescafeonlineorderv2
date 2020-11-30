@@ -2,6 +2,8 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
+        * {margin: 0; padding: 0;}
+
         /* Centers things on the window, such as the Abilities Cafe logo and the food items*/
         .center {
             max-width: 1000px;
@@ -67,23 +69,16 @@
             max-height:1000px;
             margin: auto;
             position: relative;
-            
-            text-align: center;
         }
 
         /*this is the "popup" window that shows the details page of a food product*/
         #marginDIV {
+            position: fixed;
+            background-color: greenyellow;
+            width: 100%;
+            max-width: 1000px;
+            height: 400px;
             display: none;
-            position:fixed;
-            align-self: center;
-            background-color:grey;
-            top:10%;
-            
-            width:calc(100% - 15px);  /* adjust as per your needs */
-            max-width:1000px;
-            
-            height:calc(100% - 15px);
-            max-height:500px;   /* adjust as per your needs */
         }
 
         /*the image that shows the food on the details page*/
@@ -95,20 +90,13 @@
             width:40%;  /* adjust as per your needs */
         }
 
-        /*the description of the food item on the details page*/
-        #textDescription {
-            float: right;
-            background-color:grey;
-            margin: 5%;
-            
-            width:40%;  /* adjust as per your needs */
-        }
-
-        #quantityBox {
-            position:absolute;
-            bottom:0;
-            left:0;
-        }
+        /*Horizontal alignment for the popup window*/
+        .container {height: 100%; width:100%; font-size: 0;}
+        .left, .middle, .right {display: inline-block; *display: inline; zoom: 1; vertical-align: top; font-size: 12px;
+            height: 250px;}
+        .left {width: 40%;}
+        .middle {width: 30%; padding: 2%}
+        .right {width: 20%;}
 
         /*The upper half of the product details page*/
         .top_popup{
@@ -123,6 +111,15 @@
             position: absolute;
             bottom: 0;
             width: 100%;
+        }
+
+        /*For the popup window*/
+        .cart_text{
+            font-size: 30px;
+            width: 80%;
+            height: 50%;
+            margin: 5%;
+            margin-top: 10%
         }
     </style>
 </head>
@@ -141,14 +138,16 @@
                 <div class = "column-item">
                     <img src = "img/Cookie.jpg" width = "100%";></img>
                     <p>Cookies.  Need I say more?</p>
-                    <span><button class="button" height = "20px" onclick="on(&quot;Cookie&quot;)">Add to cart ($3.00)</button></span>
+                    <span><button class="button" height = "20px" onclick="on(&quot;Cookie&quot;)">
+                        Add to cart ($3.00)</button></span>
                 </div>
 
                 <!-- Sandwich -->
                 <div class = "column-item">
                     <img src = "img/Sandwich.jpg" width = "100%";></img>
                     <p>Artisan sandwiches</p>
-                    <span><button class="button" height = "20px" onclick="on(&quot;Sandwich&quot;)">Add to cart ($10.00)</button></span>
+                    <span><button class="button" height = "20px" onclick="on(&quot;Sandwich&quot;)">
+                        Add to cart ($10.00)</button></span>
                 </div>
             </div>
 
@@ -158,40 +157,46 @@
                 <div class = "column-item">
                     <img src = "img/Coffee.jpg" width = "100%";></img>
                     <p>Coffee, available in "for here" and "to go" cups</p>
-                    <span><button class="button" height = "20px" onclick="on(&quot;Coffee&quot;)">Add to cart ($4.00)</button></span>
+                    <span><button class="button" height = "20px" onclick="on(&quot;Coffee&quot;)">
+                        Add to cart ($4.00)</button></span>
                 </div>
 
                 <!-- Scone -->
                 <div class = "column-item">
                     <img src = "img/Scone.jpg" width = "100%";></img>
                     <p>Housemade scones</p>
-                    <span><button class="button" height = "20px" onclick="on(&quot;Scone&quot;)">Add to cart ($5.50)</button></span>
+                    <span><button class="button" height = "20px" onclick="on(&quot;Scone&quot;)">
+                        Add to cart ($5.50)</button></span>
                 </div>
             </div>
         </div>
 
         <!-- The fixed DIV that contains the "popup" window -->
         <div class = "center2">
-            <!-- Center popup window for showing details of a specific food item -->
+            <!-- Center popup window for showing details of a specific food item, similar to the cart window -->
             <div id = "marginDIV" display = "none">
-                <!-- Upper half of the DIV -->
-                <div class = "top_popup">
-                    <span>
-                        <!-- Image -->
-                        <img id="myImage" src="Cookie.jpg">
-                        <!-- Description -->
-                        <div width = "40%" height = "1000px"; padding = "1%">
-                            <p id="textDescription" width = "40%" style="font-size:30px">oops</p>
-                            <input type="number" id="quanitityBox">
-                        </div>
-                    </span>
+                <!-- The image -->
+                <div class="left">
+                    <img id = "myImage" src = "img/Cookie.jpg" style = "left: 0; margin: 5%; width:100%;"></img>
                 </div>
-                <!-- Bottom half of the DIV -->
-                <div class = "bottom_buttons">
-                    <!-- Add to cart -->
-                    <button class="popup_button" height="20px" onclick="off(&quot;scone&quot;)">Add to cart</button>
-                    <!-- Close -->
-                    <button class="popup_button" height="20px" onclick="off(&quot;scone&quot;)">Close</button>
+
+                <!-- The name and quantity -->
+                <div class="middle">
+                    <p id = "textDescription" class = "cart_text" align = "left">Chocolate Chip Cookies</p>
+                    <div  align = "left">
+                        <p style = "font-size: 30px; width: 80%; margin: 5%; vertical-align: bottom;">Quantity</p>
+                        <input align = "left" type="number" id="quanitityBox" style = "margin: 5%; height: 40px;
+                            font-size:40px; width: 80%;">
+                    </div>
+                </div>
+
+                <!-- The price and buttons -->
+                <div class="right">
+                    <p class = "cart_text" align = "right">$4.00</p>
+                    <button onclick="off()" style = "position: absolute; font-size: 20px; min-height: 50px; width: 20%;
+                        height: 10px; right: 5%; bottom: 30%;">Close</button>
+                    <button style = "position: absolute; font-size: 20px; min-height: 50px; width: 20%; height: 10px;
+                        right: 5%; bottom: 15%;">Add to cart</button>
                 </div>
             </div>
         </div>
