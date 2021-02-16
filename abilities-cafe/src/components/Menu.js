@@ -8,7 +8,7 @@ export default () => {
     {
         name: "Cookies",
         price: "$3.00",
-        image: "cookie.jpg",
+        image: "test_images/cookie.jpg",
         description: "Cookies.  Need I say more?"
     },
     {
@@ -29,13 +29,7 @@ export default () => {
         image: "test_images/Scone.jpg",
         description: "Housemade scones"
     },
-    {
-        name: "Scones",
-        price: "$5.50",
-        image: "test_images/Scone.jpg",
-        description: "Housemade scones"
-    }
- ])
+ ]);
 
 // function to display products based on Daniel's code
 

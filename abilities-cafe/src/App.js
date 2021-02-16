@@ -18,7 +18,7 @@ function App() {
         // user is signed in
         console.log(user.uid);
         setStage("loggedIn");
-        setSignUpSignIn("SI")
+        setSignUpSignIn("SI");
       } else {
         // no user is signed in
         console.log("No user logged in");
@@ -34,7 +34,7 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar stage={stage} />
+      <Navbar stage={stage} /> 
       {stage === 'loggedIn' && <Menu />}
       {stage === 'notLoggedIn' && signUpSignIn === 'SI' && <SignIn changeState={changeState} />}
       {stage === 'notLoggedIn' && signUpSignIn === 'SU' && <SignUp changeState={changeState} />}

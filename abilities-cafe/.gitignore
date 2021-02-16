@@ -27,3 +27,6 @@ yarn-error.log*
 
 # for mac users
 git rm --cached ../.DS_Store
+
+# database password
+src/firebase.js
