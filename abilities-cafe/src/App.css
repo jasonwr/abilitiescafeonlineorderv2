@@ -13,3 +13,41 @@ body {
   background-color: transparent;
   box-shadow: 0 0 0 transparent;
 }
+
+.cagegories {
+  padding: 10px;
+  background-color: transparent;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  background-color:white;
+}
+
+.holder {
+  padding: min(30px, 5%);
+  background-color: transparent;
+}
+
+.product {
+  padding: min(40px, 7%);
+  background-color: aqua;
+}
+
+.products img {
+  width: 100%;
+}
+
+.product button {
+  height: "20px";
+  font-size: clamp(14px, 4vw, 22px);
+  min-height: 30px;
+  width: 100%;
+}
+
+.product p {
+  text-align: center;
+  font-size: clamp(14px, 4vw, 22px);
+}

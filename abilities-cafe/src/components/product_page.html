@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        /* Centers things on the window, such as the Abilities Cafe logo and the food items*/
+        .center {
+            max-width: 1000px;
+            margin: auto;
+            position: relative;
+            
+            text-align: center
+        }
+
+        /*vertical columns for the purpose of the two-column layout*/
+        .column {
+            position: relative;
+            float: left;
+            
+            width: 50%;
+            max-width: 500px;
+            min-width: 200px;
+            background-color:white;
+        }
+
+        /*an item inside the column*/
+        .column-item {
+            position: relative;
+            float: left;
+            margin: 5%;
+            padding: 5%;
+            width: 80%;
+            padding-bottom: 50%;
+            height: 400px;
+            max-width: 500px;
+            font-size: 200%;
+            background-color:aqua;
+        }
+
+        /*an "add to cart" button inside a food item*/
+        .button {
+            font-size: 24px;
+            min-height: 50px;
+            width: 100%;
+        }
+
+        /*these help the "add to cart" buttons stay at the bottom of a div*/
+        .column-item span{
+            position: absolute;
+            bottom: 8%;
+            width: 80%;
+            right: 10%;
+        }
+
+        /*A button that appears on the "popup" window that shows details for a food item*/
+        .popup_button {
+            font-size: 24px;
+            min-height: 50px;
+            width: 45%;
+            margin: 2%;
+        }
+
+        /*Like the "center" class above but facilitates the
+        position:fixed properties of the details page*/
+        .center2 {
+            max-width: 1000px;
+            
+            max-height:1000px;
+            margin: auto;
+            position: relative;
+            
+            text-align: center;
+        }
+
+        /*this is the "popup" window that shows the details page of a food product*/
+        #marginDIV {
+            display: none;
+            position:fixed;
+            align-self: center;
+            background-color:grey;
+            top:10%;
+            
+            width:calc(100% - 15px);  /* adjust as per your needs */
+            max-width:1000px;
+            
+            height:calc(100% - 15px);
+            max-height:500px;   /* adjust as per your needs */
+        }
+
+        /*the image that shows the food on the details page*/
+        #myImage {
+            float: left;
+            background-color:grey;
+            margin: 5%;
+            
+            width:40%;  /* adjust as per your needs */
+        }
+
+        /*the description of the food item on the details page*/
+        #textDescription {
+            float: right;
+            background-color:grey;
+            margin: 5%;
+            
+            width:40%;  /* adjust as per your needs */
+        }
+
+        #quantityBox {
+            position:absolute;
+            bottom:0;
+            left:0;
+        }
+
+        /*The upper half of the product details page*/
+        .top_popup{
+            float: left;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+
+        /*The bottom half of the product details page, housing two buttons*/
+        .bottom_buttons{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<html>
+    <body>
+        <!-- The Abilities Cafe logo at the top -->
+        <div class = "center">
+            <img src="../pageLogo/AbilitiesCafeLogoFinal-1.png" class = "center" max-width = "200px" width = "20%"></img>
+        </div>
+
+        <!-- The columns that show the products being sold -->
+        <div class="center">
+            <!-- Left column -->
+            <div class="column">
+                <!-- Cookie -->
+                <div class = "column-item">
+                    <img src = "cookie.jpg" width = "100%";></img>
+                    <p>Cookies.  Need I say more?</p>
+                    <span><button class="button" height = "20px" onclick="on(&quot;Cookie&quot;)">Add to cart ($3.00)</button></span>
+                </div>
+
+                <!-- Sandwich -->
+                <div class = "column-item">
+                    <img src = "../../../img/Sandwich.jpg" width = "100%";></img>
+                    <p>Artisan sandwiches</p>
+                    <span><button class="button" height = "20px" onclick="on(&quot;Sandwich&quot;)">Add to cart ($10.00)</button></span>
+                </div>
+            </div>
+
+            <!-- Right column -->
+            <div class="column">
+                <!-- Coffee -->
+                <div class = "column-item">
+                    <img src = "../../../img/Coffee.jpg" width = "100%";></img>
+                    <p>Coffee, available in "for here" and "to go" cups</p>
+                    <span><button class="button" height = "20px" onclick="on(&quot;Coffee&quot;)">Add to cart ($4.00)</button></span>
+                </div>
+
+                <!-- Scone -->
+                <div class = "column-item">
+                    <img src = "../../../img/Scone.jpg" width = "100%";></img>
+                    <p>Housemade scones</p>
+                    <span><button class="button" height = "20px" onclick="on(&quot;Scone&quot;)">Add to cart ($5.50)</button></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- The fixed DIV that contains the "popup" window -->
+        <div class = "center2">
+            <!-- Center popup window for showing details of a specific food item -->
+            <div id = "marginDIV" display = "none">
+                <!-- Upper half of the DIV -->
+                <div class = "top_popup">
+                    <span>
+                        <!-- Image -->
+                        <img id="myImage" src="Cookie.jpg">
+                        <!-- Description -->
+                        <div width = "40%" height = "1000px"; padding = "1%">
+                            <p id="textDescription" width = "40%" style="font-size:30px">oops</p>
+                            <input type="number" id="quanitityBox">
+                        </div>
+                    </span>
+                </div>
+                <!-- Bottom half of the DIV -->
+                <div class = "bottom_buttons">
+                    <!-- Add to cart -->
+                    <button class="popup_button" height="20px" onclick="off(&quot;scone&quot;)">Add to cart</button>
+                    <!-- Close -->
+                    <button class="popup_button" height="20px" onclick="off(&quot;scone&quot;)">Close</button>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            //make the product details window appear and/or update its contents
+            function on(message) {
+                var x = document.getElementById("marginDIV");
+                x.style.display = "block";
+
+                //update image
+                document.getElementById("myImage").src = 'img/' + message + '.jpg';
+
+                //Note: you probably want to change this to read the file and put its text inside
+                document.getElementById("textDescription").innerText = 'description/' + message + '.txt';
+            }
+
+            //make the product details window disappear
+            function off() {
+                var x = document.getElementById("marginDIV");
+                x.style.display = "none";
+            }
+        </script>
+    </body>
+</html>
