@@ -32,7 +32,7 @@ export default (props) => {
                 <TextInput label="First Name" onChange={e => onChangeText('firstName', e.target.value)} />
                 <TextInput label="Last Name" onChange={e => onChangeText('lastName', e.target.value)} />
                 <TextInput label="Email" onChange={e => onChangeText('email', e.target.value)} />
-                <TextInput label="Password" onChange={e => onChangeText('password', e.target.value)} />
+                <TextInput type="password" label="Password" onChange={e => onChangeText('password', e.target.value)} />
                 <Button node="button" type="submit" waves="light" onClick={onSubmit}>
                     Submit
                     <Icon right>send</Icon>

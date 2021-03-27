@@ -51,7 +51,7 @@ export default () => {
                                     */}
                                     <p> {product.name} </p>
                                     <span>
-                                        <button class="button" height = "20px">Add to cart ({product.price})</button>
+                                        <button className="button" height = "20px">Add to cart ({product.price})</button>
                                     </span>
                                 </div>
                             </div>
