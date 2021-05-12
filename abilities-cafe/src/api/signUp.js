@@ -1,5 +1,6 @@
 import { firebaseDB, userRef } from '../firebase';
 
+//my sign up thing
 export default ({email, password, firstName, lastName}) => {
     if (!firstName || !lastName) {
         return false;
