@@ -9,25 +9,29 @@ export default () => {
         name: "Cookies",
         price: "$3.00",
         image: "test_images/cookie.jpg",
-        description: "Cookies.  Need I say more?"
+        description: "Cookies.  Need I say more?",
+        double_price: 3.0
     },
     {
         name: "Sandwich",
         price: "$10.00",
         image: "test_images/Sandwich.jpg",
-        description: "Artisan sandwiches"
+        description: "Artisan sandwiches",
+        double_price: 10.0
     },
     {
         name: "Coffee",
         price: "$4.00",
         image: "test_images/Coffee.jpg",
-        description: "Coffee, available in 'for here' and 'to go' cups"
+        description: "Coffee, available in 'for here' and 'to go' cups",
+        double_price: 4.0
     },
     {
         name: "Scones",
         price: "$5.50",
         image: "test_images/Scone.jpg",
-        description: "Housemade scones"
+        description: "Housemade scones",
+        double_price: 5.50
     },
  ]);
 

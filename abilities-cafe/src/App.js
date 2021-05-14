@@ -7,6 +7,7 @@ import signIn from './api/signIn';
 import SignIn from "./components/SignIn";
 import Menu from './components/Menu';
 import Navbar from './components/Recuring/Navbar';
+import Routes from "./Routes"
 
 function App() {
   const [stage, setStage] = useState('');
@@ -35,7 +36,7 @@ function App() {
   return (
     <div className="App">
       <Navbar stage={stage} /> 
-      {stage === 'loggedIn' && <Menu />}
+      {stage === 'loggedIn' && <Routes />}
       {stage === 'notLoggedIn' && signUpSignIn === 'SI' && <SignIn changeState={changeState} />}
       {stage === 'notLoggedIn' && signUpSignIn === 'SU' && <SignUp changeState={changeState} />}
     </div>

@@ -18,6 +18,8 @@ export default ({email, password, firstName, lastName}) => {
             return true;
         })
         .catch((err) => {
+            
+            debugger;
             console.log(err);
             return false;
         });

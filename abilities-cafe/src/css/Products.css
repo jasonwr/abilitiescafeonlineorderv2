@@ -1,0 +1,122 @@
+/* Centers things on the window, such as the Abilities Cafe logo and the food items*/
+.center {
+    max-width: 1000px;
+    margin: auto;
+    position: relative;
+    
+    text-align: center
+}
+
+/*vertical columns for the purpose of the two-column layout*/
+.column {
+    position: relative;
+    float: left;
+    
+    width: 50%;
+    max-width: 500px;
+    min-width: 200px;
+    background-color:white;
+}
+
+/*an item inside the column*/
+.column-item {
+    position: relative;
+    float: left;
+    margin: 5%;
+    padding: 5%;
+    width: 80%;
+    padding-bottom: 50%;
+    height: 400px;
+    max-width: 500px;
+    font-size: 200%;
+    background-color:aqua;
+}
+
+/*an "add to cart" button inside a food item*/
+.button {
+    font-size: 24px;
+    min-height: 50px;
+    width: 100%;
+}
+
+/*these help the "add to cart" buttons stay at the bottom of a div*/
+.column-item span{
+    position: absolute;
+    bottom: 8%;
+    width: 80%;
+    right: 10%;
+}
+
+/*A button that appears on the "popup" window that shows details for a food item*/
+.popup_button {
+    font-size: 24px;
+    min-height: 50px;
+    width: 45%;
+    margin: 2%;
+}
+
+/*Like the "center" class above but facilitates the
+position:fixed properties of the details page*/
+.center2 {
+    max-width: 1000px;
+    
+    max-height:1000px;
+    margin: auto;
+    position: relative;
+    
+    text-align: center;
+}
+
+/*this is the "popup" window that shows the details page of a food product*/
+#marginDIV {
+    display: none;
+    position:fixed;
+    align-self: center;
+    background-color:grey;
+    top:10%;
+    
+    width:calc(100% - 15px);  /* adjust as per your needs */
+    max-width:1000px;
+    
+    height:calc(100% - 15px);
+    max-height:500px;   /* adjust as per your needs */
+}
+
+/*the image that shows the food on the details page*/
+#myImage {
+    float: left;
+    background-color:grey;
+    margin: 5%;
+    
+    width:40%;  /* adjust as per your needs */
+}
+
+/*the description of the food item on the details page*/
+#textDescription {
+    float: right;
+    background-color:grey;
+    margin: 5%;
+    
+    width:40%;  /* adjust as per your needs */
+}
+
+#quantityBox {
+    position:absolute;
+    bottom:0;
+    left:0;
+}
+
+/*The upper half of the product details page*/
+.top_popup{
+    float: left;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+/*The bottom half of the product details page, housing two buttons*/
+.bottom_buttons{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
