@@ -1,7 +1,8 @@
 import React from "react"
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import Products from './css/Products.css'
-import { firebaseDB, userRef } from './firebase';
+import { firebaseDB, userRef } from './firebase'
+import { Products } from './components/'
+
 export default function Routes() {
     return (
         <Router>
