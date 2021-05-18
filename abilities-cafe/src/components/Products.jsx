@@ -32,22 +32,21 @@ export const Products = () => {
 
   return (
     <>
-      {/*TODO: copy AbilitiesCafeLogoFinal-1.png to test_images and use it at line 40*/}
-      {/*<div className={"center"}>*/}
-      {/*  <img*/}
-      {/*    alt={"Logo"}*/}
-      {/*    className="center"*/}
-      {/*    src="../pageLogo/AbilitiesCafeLogoFinal-1.png"*/}
-      {/*    style={{maxWidth: "200px", width: "200px", height: "200px"}}*/}
-      {/*  />*/}
-      {/*</div>*/}
+      <div className={"center"}>
+        <img
+        alt={"Logo"}
+        className="center"
+        src={require("./test_images/AbilitiesCafeLogoFinal-1.png")}
+        style={{maxWidth: "200px", width: "200px", height: "200px"}}
+      />
+     </div>
 
       <div className="center">
         <div className="column">
           <MenuItem
             callback={name => on(name)}
             monetaryValue={'3.00'}
-            description={'Cookies. Need I say more?'}
+            description={'Cookies!'}
             name={'Cookie'}
           />
 

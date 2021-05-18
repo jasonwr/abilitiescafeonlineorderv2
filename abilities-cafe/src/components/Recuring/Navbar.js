@@ -8,7 +8,12 @@ export default () => {
             <Container>
                 <Navbar
                     alignLinks="left"
-                    brand={<a className="brand-logo" href="#">Logo</a>}
+                    brand={<img
+                        alt={"Logo"}
+                        className="center"
+                        src={require("../test_images/AbilitiesCafeLogoFinal-1.png")}
+                        style={{maxWidth: "70px", width: "70px", height: "70px"}}
+                      />}
                     centerLogo
                     id="mobile-nav"
                     className="custom-navbar"
