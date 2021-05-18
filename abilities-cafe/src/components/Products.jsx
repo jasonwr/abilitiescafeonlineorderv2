@@ -1,4 +1,4 @@
-import React, {useRef} from 'react'
+import React, {useRef, useState} from 'react'
 import '../css/Products.css'
 import {MenuItem} from './MenuItem'
 
@@ -7,6 +7,33 @@ export const Products = () => {
   let marginDIV = useRef()
   let myImage = useRef()
   let textDescription = useRef()
+
+  let [items, setItems] = useState({
+    'Cookie':    
+    {
+      desc: 'Cookies!', 
+      price: '5.00',
+      qty: 0
+    },
+    'Scone':     
+    {
+      desc: 'Home made scones', 
+      price: '5.50',
+      qty: 0
+    },
+    'Coffee':
+    {
+      desc: 'Coffee for the soul',
+      price: '4.00',
+      qty: 0
+    },
+    'Sandwich':
+    {
+      desc: 'Artisan sandwiches',
+      price: '10.00',
+      qty: 0
+    }
+  })
 
   //make the product details window appear and/or update its contents
   function on(message) {
@@ -43,6 +70,27 @@ export const Products = () => {
 
       <div className="center">
         <div className="column">
+        {
+          Object.keys(items).map((item, i) => {
+            let {qty, price, desc} = items[item]
+            return (
+              <MenuItem
+                callback={name => on(name)}
+                monetaryValue={price}
+                description={desc}
+                name={item}
+              />
+            )
+          })
+/* TODO: figure out where to inject the <div className="column">
+          let rows = nodes.length / 2
+          for(let i = 0; i < nodes.length; i++) {
+            if ((i+1) % rows == 0)
+          }
+*/
+        }
+        </div>
+        {/* <div className="column">
           <MenuItem
             callback={name => on(name)}
             monetaryValue={'3.00'}
@@ -75,27 +123,22 @@ export const Products = () => {
             description={'House made scones'}
             name={'Scone'}
           />
+        </div> */}
+      </div>
+      <div className="center"> 
+        <div calssName="column">
+          {
+            Object.keys(items).map(item => {
+              let {qty, price} = items[item]
+              return (
+                <div>
+                  {item}(${price}) - {qty}
+                </div>
+              )
+            })
+          }
         </div>
       </div>
-
-
-      {/*<div className="center2">*/}
-      {/*  <div ref={marginDIV} display="none">*/}
-      {/*    <div className="top_popup">*/}
-      {/*      <div>*/}
-      {/*        <img ref={myImage} src="Cookie.jpg"/>*/}
-      {/*        <div width="40%" height="1000px" padding="1%">*/}
-      {/*          <p ref={textDescription} width="40%" style={{fontSize: '30px'}}>oops</p>*/}
-      {/*          <input type="number" id="quanitityBox"/>*/}
-      {/*        </div>*/}
-      {/*      </div>*/}
-      {/*    </div>*/}
-      {/*    <div>*/}
-      {/*      <button className="popup_button" height="20px" onClick={() => off('Scone')}>Add to cart</button>*/}
-      {/*      <button className="popup_button" height="20px" onClick={() => off('Scone')}>Close</button>*/}
-      {/*    </div>*/}
-      {/*  </div>*/}
-      {/*</div>*/}
     </>
   )
 }
