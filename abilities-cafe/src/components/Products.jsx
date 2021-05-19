@@ -141,7 +141,7 @@ export const Products = () => {
         </div> */}
       </div>
       <div className="center">
-        <div calssName="column">
+        <div className="column">
           {
             Object.keys(items).map(item => {
               let {qty, price} = items[item]
