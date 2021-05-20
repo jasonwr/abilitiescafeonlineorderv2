@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar, Icon, NavItem, Container } from 'react-materialize';
-import { firebaseDB } from '../../firebase';
+import { firebaseDB } from '../../firebase'
 
 export default () => {
     return (

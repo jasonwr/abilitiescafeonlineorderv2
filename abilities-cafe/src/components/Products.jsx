@@ -5,15 +5,25 @@ import { getMenuItems } from '../api/getMenuItems'
 
 export const Products = () => {
 
-  let [menuItems, setMenuItems] = useState()
+  let [menuItems, setMenuItems] = useState({})
 
   useEffect(() => {
      getMenuItems()
-       .then(r => {
-         debugger
-         console.log(JSON.stringify(r))
-       })
-       .catch(e => {
+        .then((querySnapshot) => {
+          let formatted = {}
+          querySnapshot.forEach((doc) => {
+           // {"Name":"Scone","Quantity":20000,"Price":"$5.50","Description":"Home made scones"}
+            const {Name: name, Price: price, Quantity: qty, Description: desc} = doc.data()
+            formatted[name] = {
+              desc,
+              price,
+              qty,
+            }
+            // console.log(`${doc.id} => ${JSON.stringify(doc.data())}`)
+          });
+          setMenuItems(formatted)
+        })
+        .catch(e => {
          console.log('There was an error')
          console.log(e)
        })
@@ -58,10 +68,10 @@ export const Products = () => {
     }
 
     //update image
-    myImage.src = './test_images/' + message + '.jpg'
+    //myImage.src = './test_images/' + message + '.jpg'
 
     //Note: you probably want to change this to read the file and put its text inside
-    textDescription.innerText = 'description/' + message + '.txt'
+    //textDescription.innerText = 'description/' + message + '.txt'
   }
 
   //make the product details window disappear
@@ -86,10 +96,11 @@ export const Products = () => {
       <div className="center">
         <div className="column">
         {
-          Object.keys(items).map((item, i) => {
-            let {qty, price, desc} = items[item]
+          Object.keys(menuItems).map((item, i) => {
+            let {qty, price, desc} = menuItems[item]
             return (
               <MenuItem
+                key={`menu-item-${i}`}
                 callback={name => on(name)}
                 monetaryValue={price}
                 description={desc}
@@ -143,11 +154,13 @@ export const Products = () => {
       <div className="center">
         <div className="column">
           {
-            Object.keys(items).map(item => {
-              let {qty, price} = items[item]
+            Object.keys(menuItems).map((item, i) => {
+              let {qty, price} = menuItems[item]
               return (
-                <div>
-                  {item}(${price}) - {qty}
+                <div
+                  key={`cart-output-item-${i}`}
+                >
+                  {item}({price}) - {qty}
                 </div>
               )
             })

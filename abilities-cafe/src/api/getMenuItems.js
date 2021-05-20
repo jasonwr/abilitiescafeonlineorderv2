@@ -1,12 +1,6 @@
-import {db} from '../firebase'
+import {DataB} from '../firebase'
 
 export const getMenuItems = async () => {
-  return await db.collection("MenuItems")
-    .get()
-    .then((querySnapshot) => {
-      debugger
-      querySnapshot.forEach((doc) => {
-        console.log(`${doc.id} => ${doc.data()}`);
-      });
-    });
+  return await DataB.collection("MenuItems").get()
+
 }
