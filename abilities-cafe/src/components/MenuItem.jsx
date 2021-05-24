@@ -15,7 +15,7 @@ export const MenuItem = ({name, description, callback, monetaryValue}) => {
         height="20px"
         onClick={() => callback(name)}
       >
-        Add to cart (${monetaryValue})
+        Add to cart ({monetaryValue})
       </button>
     </div>
   )

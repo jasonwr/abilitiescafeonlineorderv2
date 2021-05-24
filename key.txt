@@ -1,0 +1,6 @@
+export const firebaseDB = firebase.initializeApp(firebaseConfig);
+let db = firebase.firestore(firebaseDB);
+export const userRef = firebaseDB.database().ref("users");
+//export const itemRef = firebaseDB.database().ref("item");
+export const menuItemRef = firebaseDB.database().ref("MenuItem");
+export const DataB = firebase.firestore(firebaseDB);

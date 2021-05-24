@@ -33,6 +33,32 @@ export const Products = () => {
   let myImage = useRef()
   let textDescription = useRef()
 
+  const hasItems = () => {
+    let menuKeys = Object.keys(menuItems) 
+    if (menuItems && menuKeys.length > 0) {
+      return !!getQtyTotal()
+    }
+
+    return false
+  }
+
+  const getQtyTotal = () => {
+    return Object
+      .keys(menuItems)
+      .reduce((qtyTotal, key) => {
+        return qtyTotal + menuItems[key]["qty"]
+      }, 0)
+  }
+
+  const getPriceTotal = () => {
+    return Object
+      .keys(menuItems)
+      .reduce((total, key) => {
+        const { price, qty } = menuItems[key]
+        return total + (price * qty)
+      }, 0)
+  }
+
   let [items, setItems] = useState({
     'Cookie':
     {
@@ -52,7 +78,7 @@ export const Products = () => {
       price: '4.00',
       qty: 0
     },
-    'Sandwich':
+    'Sandwiches':
     {
       desc: 'Artisan sandwiches',
       price: '10.00',
@@ -61,17 +87,11 @@ export const Products = () => {
   })
 
   //make the product details window appear and/or update its contents
-  function on(message) {
-    let x = marginDIV
-    if (x && x.style && x.style.display) {
-      x.style.display = "block"
-    }
-
-    //update image
-    //myImage.src = './test_images/' + message + '.jpg'
-
-    //Note: you probably want to change this to read the file and put its text inside
-    //textDescription.innerText = 'description/' + message + '.txt'
+  function addToCart(name) {
+    items[name]['qty'] += 1
+    let updatedMenuItems = items
+    debugger
+    setMenuItems(JSON.parse(JSON.stringify(updatedMenuItems)))
   }
 
   //make the product details window disappear
@@ -97,65 +117,33 @@ export const Products = () => {
         <div className="column">
         {
           Object.keys(menuItems).map((item, i) => {
-            let {qty, price, desc} = menuItems[item]
+            let {price, desc} = menuItems[item]
             return (
               <MenuItem
                 key={`menu-item-${i}`}
-                callback={name => on(name)}
+                callback={name => addToCart(name)}
                 monetaryValue={price}
                 description={desc}
                 name={item}
               />
             )
           })
-/* TODO: figure out where to inject the <div className="column">
-          let rows = nodes.length / 2
-          for(let i = 0; i < nodes.length; i++) {
-            if ((i+1) % rows == 0)
-          }
-*/
+
         }
         </div>
-        {/* <div className="column">
-          <MenuItem
-            callback={name => on(name)}
-            monetaryValue={'3.00'}
-            description={'Cookies. Need I say more?'}
-            name={'Cookie'}
-          />
-
-          <MenuItem
-            callback={name => on(name)}
-            monetaryValue={'10.00'}
-            description={'Artisan sandwiches'}
-            name={'Sandwich'}
-          />
-        </div>
-
-
-
-        <div className="column">
-
-          <MenuItem
-            callback={name => on(name)}
-            monetaryValue={'4.00'}
-            description={'Coffee for the soul'}
-            name={'Coffee'}
-          />
-
-          <MenuItem
-            callback={name => on(name)}
-            monetaryValue={'5.50'}
-            description={'House made scones'}
-            name={'Scone'}
-          />
-        </div> */}
+        
       </div>
       <div className="center">
         <div className="column">
           {
-            Object.keys(menuItems).map((item, i) => {
-              let {qty, price} = menuItems[item]
+            hasItems() && (
+              <h4>Grand Total: ${getPriceTotal()}</h4>
+            )
+          }
+          {
+            hasItems() && Object.keys(menuItems).map((item, i) => {
+              let {price, qty} = menuItems[item]
+              debugger
               return (
                 <div
                   key={`cart-output-item-${i}`}
@@ -167,25 +155,7 @@ export const Products = () => {
           }
         </div>
       </div>
-
-
-      {/*<div className="center2">*/}
-      {/*  <div ref={marginDIV} display="none">*/}
-      {/*    <div className="top_popup">*/}
-      {/*      <div>*/}
-      {/*        <img ref={myImage} src="Cookie.jpg"/>*/}
-      {/*        <div width="40%" height="1000px" padding="1%">*/}
-      {/*          <p ref={textDescription} width="40%" style={{fontSize: '30px'}}>oops</p>*/}
-      {/*          <input type="number" id="quanitityBox"/>*/}
-      {/*        </div>*/}
-      {/*      </div>*/}
-      {/*    </div>*/}
-      {/*    <div>*/}
-      {/*      <button className="popup_button" height="20px" onClick={() => off('Scone')}>Add to cart</button>*/}
-      {/*      <button className="popup_button" height="20px" onClick={() => off('Scone')}>Close</button>*/}
-      {/*    </div>*/}
-      {/*  </div>*/}
-      {/*</div>*/}
+      
     </>
   )
 }
