@@ -1,6 +1,6 @@
 import React, {useRef} from 'react'
 
-export const MenuItem = ({name, description, callback, monetaryValue}) => {
+export const MenuItem = ({name, description, callback, callback2, monetaryValue}) => {
 
   return (
     <div className="column-item">
@@ -17,6 +17,13 @@ export const MenuItem = ({name, description, callback, monetaryValue}) => {
       >
         Add to cart ({monetaryValue})
       </button>
+      <button
+        className="button"
+        height="20px"
+        onClick={() => callback2(name)}
+        >
+          Remove to cart
+        </button>
     </div>
   )
 }

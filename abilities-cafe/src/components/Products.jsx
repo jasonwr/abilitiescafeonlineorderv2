@@ -42,6 +42,14 @@ export const Products = () => {
     return false
   }
 
+  const isWhole = () => {
+    let test =  parseInt(getPriceTotal(), 10)
+    if (test == getPriceTotal()){
+      return true
+    }
+    return false
+  }
+
   const getQtyTotal = () => {
     return Object
       .keys(menuItems)
@@ -95,11 +103,13 @@ export const Products = () => {
   }
 
   //make the product details window disappear
-  function off() {
-    let x = marginDIV
-    if (x && x.style && x.style.display) {
-      x.style.display = "none"
-    }
+  function removeToCart(name) {
+    if (items[name]['qty'] > 0)
+    {
+      items[name]['qty'] -= 1
+      let updatedMenuItems = items
+      setMenuItems(JSON.parse(JSON.stringify(updatedMenuItems)))
+    }   
   }
 
   return (
@@ -122,6 +132,7 @@ export const Products = () => {
               <MenuItem
                 key={`menu-item-${i}`}
                 callback={name => addToCart(name)}
+                callback2={name => removeToCart(name)}
                 monetaryValue={price}
                 description={desc}
                 name={item}
@@ -136,14 +147,18 @@ export const Products = () => {
       <div className="center">
         <div className="column">
           {
-            hasItems() && (
-              <h4>Grand Total: ${getPriceTotal()}</h4>
+            hasItems() && isWhole() && (
+              <h4>Grand Total: ${getPriceTotal()}.00</h4>
             )
+          }
+          {
+             hasItems() && !isWhole() && (
+              <h4>Grand Total: ${getPriceTotal()}0</h4>
+          )
           }
           {
             hasItems() && Object.keys(menuItems).map((item, i) => {
               let {price, qty} = menuItems[item]
-              debugger
               return (
                 <div
                   key={`cart-output-item-${i}`}
